@@ -1,16 +1,98 @@
-Generate a short Islamic YouTube Shorts script.
+Generate a high-retention Islamic YouTube Shorts script optimised for AI voiceover.
 
-Rules:
-- Start with a strong hook
-- Build emotional tension
-- Keep it under 25 seconds read time
-- Use simple, natural language
+------------------------------------------------------------
+LAYER 1 — CORE RULES
+------------------------------------------------------------
+
+- Script must be under 25 seconds read time
+- Use simple, natural spoken language (NOT formal writing)
 - No fake hadiths or Quran quotes
-- End with a reflective question or emotion that increases engagement
--Ending has to be clear and high loop potential being seemless.
+- No fabricated Islamic rulings
+- If unsure, reframe as reflection or question
 
-Structure:
-1. Hook (1–2 lines)
-2. Explanation (short emotional build-up-must be clear)
-3. Final question or high emotional stake
-4. Whole script must loop seemlessly from the end to start.
+Tone:
+- Serious
+- Direct
+- Emotionally engaging
+- Personal (speaking TO the viewer, not about them)
+
+------------------------------------------------------------
+LAYER 2 — VOICE DELIVERY SYSTEM (CRITICAL)
+------------------------------------------------------------
+
+Write for AI voiceover performance:
+
+- Short sentences (max 6–10 words preferred)
+- Natural pauses using line breaks
+- No long or complex sentences
+- No robotic phrasing
+- No filler words
+- Each line must carry emotional weight
+
+Every sentence must:
+- push tension forward
+- sound natural when spoken aloud
+- feel like real human speech
+
+------------------------------------------------------------
+LAYER 3 — EMOTIONAL ENGINE
+------------------------------------------------------------
+
+Script must strongly use at least one:
+- Guilt (you know this… but still ignore it)
+- Fear (what if this costs you…)
+- Doubt (are you actually doing this right?)
+- Urgency (you don’t have as much time as you think)
+- Reflection (you’ve never thought about this properly)
+
+Emotion must escalate throughout.
+
+------------------------------------------------------------
+LAYER 4 — STRUCTURE (MANDATORY)
+
+1. HOOK (1–2 lines)
+   - Immediate tension
+   - Direct and confronting
+   - Must create curiosity gap instantly
+
+2. BUILD-UP
+   - Clear, simple explanation
+   - Emotional escalation
+   - No fluff or wasted words
+
+3. FINAL LINE
+   - Strong emotional hit OR reflective question
+   - If question feels unnatural base purely on trying to bring a strong emotion(Do not finish by increasing guilt)
+   - Do not end in pure Guilt and cause viewer frustration
+   - Must feel unresolved (forces engagement)
+
+4. LOOP SYSTEM
+   - Ending must connect seamlessly back to the hook
+   - Should feel like a continuous cycle when replayed
+
+------------------------------------------------------------
+LAYER 5 — RETENTION OPTIMISATION
+
+- First 2 seconds must create tension
+- No slow build-ups
+- Remove anything that does not increase curiosity or emotion
+- Keep flow tight and continuous
+- Every line must justify its existence
+
+------------------------------------------------------------
+LAYER 6 — QUALITY FILTER
+
+Reject and rewrite internally if:
+- sounds robotic
+- too generic
+- lacks emotional tension
+- does not flow naturally when spoken
+- loop is weak or forced
+
+Only output strong, emotionally engaging scripts.
+
+------------------------------------------------------------
+FINAL RULE
+
+Script must sound powerful when read aloud by AI.
+If it does not sound natural, rewrite it.
