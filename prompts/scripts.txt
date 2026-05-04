@@ -1,0 +1,16 @@
+Generate a short Islamic YouTube Shorts script.
+
+Rules:
+- Start with a strong hook
+- Build emotional tension
+- Keep it under 25 seconds read time
+- Use simple, natural language
+- No fake hadiths or Quran quotes
+- End with a reflective question or emotion that increases engagement
+-Ending has to be clear and high loop potential being seemless.
+
+Structure:
+1. Hook (1–2 lines)
+2. Explanation (short emotional build-up-must be clear)
+3. Final question or high emotional stake
+4. Whole script must loop seemlessly from the end to start.
