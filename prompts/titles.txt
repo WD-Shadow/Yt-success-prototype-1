@@ -1,0 +1,26 @@
+Generate viral YouTube Shorts titles for Islamic reminder content.
+
+Rules:
+- Must create curiosity or tension immediately
+- Keep under 12 words if possible
+- Avoid clickbait lies
+- Use clickbait truths
+- No exaggerated promises
+- Focus on emotional conflict, self-reflection,warning or high emotional stake
+
+Style patterns:
+- "Are you sure about this…?"
+- "This changes everything about your prayer"
+- "Nobody told you this about dua"
+- "What if you’re missing this sign?"
+- "You must do these things"
+- "You are missing this"
+
+Do NOT:
+- Invent religious rulings
+- Use fake hadith or Quran quotes
+- Sound like generic motivational content
+- Create fake ideologies that break trust of viewers
+
+Goal:
+High CTR + curiosity gap + emotional pressure + Heavy push potential(viral)
