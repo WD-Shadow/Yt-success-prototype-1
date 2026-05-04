@@ -1,7 +1,8 @@
 import json
 from datetime import datetime
+import hashlib
 
-# ---------- JSON HELPERS ----------
+# ---------- FILE HELPERS ----------
 
 def load_json(path):
     try:
@@ -18,20 +19,34 @@ def save_output(text):
     with open("output/results.txt", "w", encoding="utf-8") as f:
         f.write(text)
 
-# ---------- DUPLICATE CHECK ----------
+# ---------- NORMALISATION ----------
 
-def is_duplicate(new_title, history):
+def normalize(text):
+    return text.lower().strip()
+
+def hash_text(text):
+    return hashlib.md5(normalize(text).encode()).hexdigest()
+
+# ---------- DUPLICATE + SIMILARITY ----------
+
+def is_duplicate_or_similar(new_idea, history):
+    new_title_hash = hash_text(new_idea["title"])
+    new_hook_hash = hash_text(new_idea["hook"])
+
     for entry in history:
-        if entry.get("title") == new_title:
+        if hash_text(entry.get("title", "")) == new_title_hash:
             return True
+        if hash_text(entry.get("hook", "")) == new_hook_hash:
+            return True
+
     return False
 
-# ---------- MAIN GENERATOR ----------
+# ---------- GENERATION ----------
 
 def generate():
     timestamp = str(datetime.now())
 
-    # ⚠️ Placeholder ideas (Codex will replace this later)
+    # ⚠️ Placeholder (Codex will overwrite this later)
     ideas = [
         {
             "hook": "You think your dua won’t be accepted…",
@@ -49,8 +64,10 @@ def generate():
         }
     ]
 
-    # Save readable output
+    # ---------- OUTPUT BUILD ----------
+
     output_text = f"Generated: {timestamp}\n\n"
+
     for i, idea in enumerate(ideas, 1):
         output_text += f"""Idea {i}:
 Hook: {idea['hook']}
@@ -63,13 +80,15 @@ Tag: {idea['tag']}
 
     save_output(output_text)
 
-    # Load history
-    history = load_json("data/history.json")
+    # ---------- HISTORY UPDATE ----------
 
-    # Add each idea separately (no duplicates)
+    history = load_json("data/history.json")
+    added = 0
+
     for idea in ideas:
-        if not is_duplicate(idea["title"], history):
+        if not is_duplicate_or_similar(idea, history):
             history.append({
+                "id": hash_text(idea["title"] + timestamp),
                 "timestamp": timestamp,
                 "hook": idea["hook"],
                 "script": idea["script"],
@@ -77,11 +96,23 @@ Tag: {idea['tag']}
                 "score": idea["score"],
                 "tag": idea["tag"]
             })
+            added += 1
 
-    # Save updated history
     save_json("data/history.json", history)
 
-    print("Saved ideas individually + avoided duplicates")
+    # ---------- RUN LOG ----------
+
+    log = load_json("data/run_log.json")
+
+    log.append({
+        "timestamp": timestamp,
+        "ideas_generated": len(ideas),
+        "ideas_saved": added
+    })
+
+    save_json("data/run_log.json", log)
+
+    print(f"Saved {added} new ideas (duplicates filtered)")
 
 if __name__ == "__main__":
     generate()
