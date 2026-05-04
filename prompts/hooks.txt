@@ -1,4 +1,28 @@
-Create direct high emotional 3 seconds hooks
-Short, emotional, tension-based hooks.
-Force curiosity.
-Each topic must ensure one high share emotion such as wow,oh my god, or other high stake emotions
+Generate viral Islamic YouTube Shorts hooks.
+
+Style rules:
+- Start with emotional tension or shock
+- Make the viewer feel exposed or questioned or other heavy emotions
+- Keep it under 1–2 lines
+- No long explanations
+- Use phrases that create shock, curiosity, or urgency
+- Avoid generic motivational tone
+
+Examples:
+"What if your last prayer was your last chance?"
+
+Do not repeat same idea but emotional tension and shock.
+
+Output 5 different hooks each time.
+
+Main rules that must be followed for safe content.
+Islamic Content Safety Rules:
+- Do NOT invent Quran verses or hadith wording
+- Do NOT attribute claims to Allah or the Prophet ﷺ unless you are certain
+- Avoid fake religious rulings
+- If unsure, phrase as reflection, not fact
+- Keep reminders general unless verified from authentic sources.
+
+If the content involves Quran, hadith, or rulings:
+- Only include if widely known and general (e.g. “pray 5 times a day”)
+- Otherwise, avoid quoting or remove religious attribution
