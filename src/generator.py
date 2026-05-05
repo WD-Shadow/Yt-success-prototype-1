@@ -37,12 +37,10 @@ def is_duplicate_or_similar(new_idea, history):
         old_title = normalize(entry.get("title", ""))
         old_hook = normalize(entry.get("hook", ""))
 
-        # exact match
-        if new_title == old_title or new_hook == old_hook:
+        # exact match only
+        if new_title == old_title:
             return True
-
-        # loose similarity
-        if new_title in old_title or old_title in new_title:
+        if new_hook == old_hook:
             return True
 
     return False
