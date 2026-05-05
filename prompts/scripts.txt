@@ -1,98 +1,102 @@
-Generate a high-retention Islamic YouTube Shorts script optimised for AI voiceover.
+Generate a HIGH-RETENTION Islamic YouTube Shorts script.
 
 ------------------------------------------------------------
-LAYER 1 — CORE RULES
+CORE OBJECTIVE
 ------------------------------------------------------------
 
-- Script must be under 25 seconds read time
-- Use simple, natural spoken language (NOT formal writing)
-- No fake hadiths or Quran quotes
-- No fabricated Islamic rulings
-- If unsure, reframe as reflection or question
-
-Tone:
-- Serious
-- Direct
-- Emotionally engaging
-- Personal (speaking TO the viewer, not about them)
+The script must:
+- feel personal and confronting
+- escalate emotion continuously
+- hold attention until the last second
+- force replay (loop naturally and seemlessly)
 
 ------------------------------------------------------------
-LAYER 2 — VOICE DELIVERY SYSTEM (CRITICAL)
+HARD CONSTRAINTS
 ------------------------------------------------------------
 
-Write for AI voiceover performance:
+- Under 25 seconds
+- Every line must add tension (no filler)
+- No generic reminders
+- No repeating obvious advice
 
-- Short sentences (max 6–10 words preferred)
-- Natural pauses using line breaks
-- No long or complex sentences
-- No robotic phrasing
-- No filler words
-- Each line must carry emotional weight
-
-Every sentence must:
-- push tension forward
-- sound natural when spoken aloud
-- feel like real human speech
+If any line feels predictable → rewrite
 
 ------------------------------------------------------------
-LAYER 3 — EMOTIONAL ENGINE
+VOICE DELIVERY (CRITICAL)
 ------------------------------------------------------------
 
-Script must strongly use at least one:
-- Guilt (you know this… but still ignore it)
-- Fear (what if this costs you…)
-- Doubt (are you actually doing this right?)
-- Urgency (you don’t have as much time as you think)
-- Reflection (you’ve never thought about this properly)
-
-Emotion must escalate throughout.
+- 5–9 words per line
+- each line = one punch
+- natural speech only
+- strong pauses using line breaks
 
 ------------------------------------------------------------
-LAYER 4 — STRUCTURE (MANDATORY)
+EMOTIONAL ENGINE (MANDATORY)
+------------------------------------------------------------
 
-1. HOOK (1–2 lines)
-   - Immediate tension
-   - Direct and confronting
-   - Must create curiosity gap instantly
+The script must:
+1. Expose a hidden flaw or behaviour
+2. Escalate discomfort
+3. Create internal conflict
 
-2. BUILD-UP
-   - Clear, simple explanation
-   - Emotional escalation
-   - No fluff or wasted words
-
-3. FINAL LINE
-   - Strong emotional hit OR reflective question
-   - If question feels unnatural base purely on trying to bring a strong emotion(Do not finish by increasing guilt)
-   - Do not end in pure Guilt and cause viewer frustration
-   - Must feel unresolved (forces engagement)
-
-4. LOOP SYSTEM
-   - Ending must connect seamlessly back to the hook
-   - Should feel like a continuous cycle when replayed
+Use:
+- doubt
+- guilt (controlled, not overwhelming)
+- self-awareness
+- tension
+-revealing of something not know if possible
 
 ------------------------------------------------------------
-LAYER 5 — RETENTION OPTIMISATION
+STRUCTURE
+------------------------------------------------------------
 
-- First 2 seconds must create tension
-- No slow build-ups
-- Remove anything that does not increase curiosity or emotion
-- Keep flow tight and continuous
-- Every line must justify its existence
+1. HOOK
+   - immediate confrontation
+   - no warm-up
+
+2. ESCALATION
+   - reveal behaviour/thought pattern
+   - increase emotional pressure
+
+3. TURN
+   - unexpected insight OR uncomfortable truth
+
+4. ENDING
+   - reflective, unresolved
+   - should mentally loop back to hook
+   - MUST NOT end with pure guilt overload
 
 ------------------------------------------------------------
-LAYER 6 — QUALITY FILTER
+LOOP SYSTEM
+------------------------------------------------------------
 
-Reject and rewrite internally if:
-- sounds robotic
-- too generic
-- lacks emotional tension
-- does not flow naturally when spoken
-- loop is weak or forced
+Ending must make the viewer rethink the hook:
+- creates replay
+- feels incomplete in a satisfying way
+-loops seemlessly to hook
 
-Only output strong, emotionally engaging scripts.
+------------------------------------------------------------
+REJECTION FILTER
+------------------------------------------------------------
+
+Rewrite if:
+- sounds like typical Islamic reminder
+- feels like advice instead of exposure
+- lacks tension progression
+- does not sound natural aloud
+
+------------------------------------------------------------
+SAFETY RULES
+------------------------------------------------------------
+
+- No fake hadith/Quran
+- No false rulings
+- If unsure → phrase as reflection or just reject
 
 ------------------------------------------------------------
 FINAL RULE
+------------------------------------------------------------
 
-Script must sound powerful when read aloud by AI.
-If it does not sound natural, rewrite it.
+The script must sound powerful when spoken.
+
+If it feels safe, generic, or predictable → REWRITE.
