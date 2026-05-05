@@ -1,26 +1,67 @@
-Generate viral YouTube Shorts titles for Islamic reminder content.
+Generate HIGH-CTR YouTube Shorts titles.
 
-Rules:
-- Must create curiosity or tension immediately
-- Keep under 12 words if possible
-- Avoid clickbait lies
-- Use clickbait truths
-- No exaggerated promises
-- Focus on emotional conflict, self-reflection,warning or high emotional stake
+------------------------------------------------------------
+CORE OBJECTIVE
+------------------------------------------------------------
 
-Style patterns:
-- "Are you sure about this…?"
-- "This changes everything about your prayer"
-- "Nobody told you this about dua"
-- "What if you’re missing this sign?"
-- "You must do these things"
-- "You are missing this"
+Titles must:
+- create immediate curiosity
+- feel slightly uncomfortable
+- hint at a hidden truth
+-make the youtube algorithm push it to audience
 
-Do NOT:
-- Invent religious rulings
-- Use fake hadith or Quran quotes
-- Sound like generic motivational content
-- Create fake ideologies that break trust of viewers
+------------------------------------------------------------
+HARD CONSTRAINTS
+------------------------------------------------------------
 
-Goal:
-High CTR + curiosity gap + emotional pressure + Heavy push potential(viral)
+- Max 9 words
+- Must create tension in first 3 words
+- Must NOT be generic or overused
+- Must not be false
+
+Avoid:
+- “Is your ___ accepted?”
+- “Nobody told you this”
+- “What if…”
+
+------------------------------------------------------------
+STYLE
+------------------------------------------------------------
+
+Use:
+- contradiction
+- exposure
+- internal conflict
+
+Examples of direction:
+- “You already gave up on this…”
+- “You’re doing this without noticing”
+- “This is why nothing feels right”
+- "You must do x"
+
+------------------------------------------------------------
+CLICK MECHANISM
+------------------------------------------------------------
+
+Each title must:
+- make viewer feel slightly exposed
+- suggest something is wrong
+- create need to resolve tension
+- Force mental need to immediately look at it
+
+------------------------------------------------------------
+SAFETY RULES
+------------------------------------------------------------
+
+- No fake religious claims
+- No fabricated rulings
+
+------------------------------------------------------------
+FINAL FILTER
+------------------------------------------------------------
+
+If it feels like a common YouTube title → rewrite.
+
+Only output sharp, curiosity-driven titles.
+
+Give high CTR title.
