@@ -30,13 +30,19 @@ def hash_text(text):
 # ---------- DUPLICATE + SIMILARITY ----------
 
 def is_duplicate_or_similar(new_idea, history):
-    new_title_hash = hash_text(new_idea["title"])
-    new_hook_hash = hash_text(new_idea["hook"])
+    new_title = normalize(new_idea["title"])
+    new_hook = normalize(new_idea["hook"])
 
     for entry in history:
-        if hash_text(entry.get("title", "")) == new_title_hash:
+        old_title = normalize(entry.get("title", ""))
+        old_hook = normalize(entry.get("hook", ""))
+
+        # exact match
+        if new_title == old_title or new_hook == old_hook:
             return True
-        if hash_text(entry.get("hook", "")) == new_hook_hash:
+
+        # loose similarity
+        if new_title in old_title or old_title in new_title:
             return True
 
     return False
@@ -46,29 +52,42 @@ def is_duplicate_or_similar(new_idea, history):
 def generate():
     timestamp = str(datetime.now())
 
-    # ⚠️ Placeholder (Codex will overwrite this later)
+    # ⚠️ Placeholder (Codex will overwrite this with real AI output)
     ideas = [
         {
-            "hook": "You think your dua won’t be accepted…",
-            "script": "You still ask… but deep down you’ve already given up.\nSo what changed?\nYour situation… or your belief?",
-            "title": "You Already Gave Up On This Dua?",
-            "score": 8,
-            "tag": "HIGH CURIOSITY"
-        },
-        {
-            "hook": "You pray… but is it even accepted?",
-            "script": "You stand there… say the words…\nbut your heart isn’t there.\nSo what are you really doing?",
-            "title": "Is Your Salah Even Being Accepted?",
-            "score": 9,
-            "tag": "HIGH GUILT TRIGGER"
+            "hook": f"Hook variation {i}",
+            "script": f"Script variation {i}",
+            "title": f"Title variation {i}",
+            "score": 5 + (i % 5),  # simulate scores 5–9
+            "tag": "AUTO"
         }
+        for i in range(20)  # 🔥 generate 20 ideas
     ]
 
-    # ---------- OUTPUT BUILD ----------
+    # ---------- LOAD HISTORY ----------
+    history = load_json("data/history.json")
 
+    # ---------- FILTER ----------
+    filtered = []
+
+    for idea in ideas:
+        if not is_duplicate_or_similar(idea, history):
+            filtered.append(idea)
+
+    # ---------- FALLBACK ----------
+    if len(filtered) == 0:
+        filtered = ideas[:3]
+
+    # ---------- SORT BY SCORE ----------
+    filtered.sort(key=lambda x: x["score"], reverse=True)
+
+    # ---------- PICK TOP ----------
+    final_ideas = filtered[:5]
+
+    # ---------- OUTPUT BUILD ----------
     output_text = f"Generated: {timestamp}\n\n"
 
-    for i, idea in enumerate(ideas, 1):
+    for i, idea in enumerate(final_ideas, 1):
         output_text += f"""Idea {i}:
 Hook: {idea['hook']}
 Script: {idea['script']}
@@ -80,12 +99,10 @@ Tag: {idea['tag']}
 
     save_output(output_text)
 
-    # ---------- HISTORY UPDATE ----------
-
-    history = load_json("data/history.json")
+    # ---------- SAVE TO HISTORY ----------
     added = 0
 
-    for idea in ideas:
+    for idea in final_ideas:
         if not is_duplicate_or_similar(idea, history):
             history.append({
                 "id": hash_text(idea["title"] + timestamp),
@@ -101,18 +118,20 @@ Tag: {idea['tag']}
     save_json("data/history.json", history)
 
     # ---------- RUN LOG ----------
-
     log = load_json("data/run_log.json")
 
     log.append({
         "timestamp": timestamp,
         "ideas_generated": len(ideas),
+        "ideas_after_filter": len(filtered),
         "ideas_saved": added
     })
 
     save_json("data/run_log.json", log)
 
-    print(f"Saved {added} new ideas (duplicates filtered)")
+    print(f"Generated {len(ideas)} → Saved {added} ideas")
+
+# ---------- RUN ----------
 
 if __name__ == "__main__":
     generate()
