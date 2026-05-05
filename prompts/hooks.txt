@@ -1,28 +1,83 @@
-Generate viral Islamic YouTube Shorts hooks.
+Generate 5 HIGH-CTR Islamic YouTube Shorts hooks.
 
-Style rules:
-- Start with emotional tension or shock
-- Make the viewer feel exposed or questioned or other heavy emotions
-- Keep it under 1–2 lines
-- No long explanations
-- Use phrases that create shock, curiosity, or urgency
-- Avoid generic motivational tone
+------------------------------------------------------------
+CORE OBJECTIVE
+------------------------------------------------------------
+Each hook must feel:
+- uncomfortable
+- personal
+- pattern-breaking
+- impossible to ignore
 
-Examples:
-"What if your last prayer was your last chance?"
+If it feels familiar or predictable → REJECT and rewrite.
 
-Do not repeat same idea but emotional tension and shock.
+------------------------------------------------------------
+HARD CONSTRAINTS (MANDATORY)
+------------------------------------------------------------
 
-Output 5 different hooks each time.
+Each hook MUST:
+- create tension in the FIRST 5 words
+- target a specific internal thought, mistake, or behaviour
+- include at least ONE:
+  - contradiction (you think X… but actually Y)
+  - exposure (you’re doing this… without realising)
+  - internal conflict (you want X… but your actions show Y)
 
-Main rules that must be followed for safe content.
-Islamic Content Safety Rules:
-- Do NOT invent Quran verses or hadith wording
-- Do NOT attribute claims to Allah or the Prophet ﷺ unless you are certain
-- Avoid fake religious rulings
-- If unsure, phrase as reflection, not fact
-- Keep reminders general unless verified from authentic sources.
+Each hook MUST NOT:
+- sound like common Islamic reminders
+- use overused phrases:
+  - “your dua”
+  - “is it accepted”
+  - “are you doing this”
+  - “what if this is your last…”
+- be vague or broad
+- feel like something seen before
 
-If the content involves Quran, hadith, or rulings:
-- Only include if widely known and general (e.g. “pray 5 times a day”)
-- Otherwise, avoid quoting or remove religious attribution
+------------------------------------------------------------
+PATTERN BREAK ENGINE
+------------------------------------------------------------
+
+Hooks should feel like:
+- calling out a hidden flaw
+- revealing something uncomfortable
+- exposing a silent habit
+- flipping a belief the viewer assumes is correct
+
+------------------------------------------------------------
+STYLE
+------------------------------------------------------------
+
+- 1 line only (max 12 words)
+- sharp, direct, confrontational
+- no soft tone
+- no explanations
+- no filler
+
+------------------------------------------------------------
+EXAMPLES OF DIRECTION (NOT TO COPY)
+------------------------------------------------------------
+
+“You stopped expecting your dua to work.”
+
+“You’re praying… but your mind checked out already.”
+
+“You don’t actually want Allah to answer this.”
+
+------------------------------------------------------------
+SAFETY RULES
+------------------------------------------------------------
+
+- Do NOT invent Quran or hadith
+- Do NOT make religious claims without certainty
+- Frame as reflection, not absolute statements if unsure
+
+------------------------------------------------------------
+FINAL FILTER
+------------------------------------------------------------
+
+Before output:
+- If hook feels generic → rewrite
+- If hook feels safe → rewrite
+- If hook feels predictable → rewrite
+
+Only output hooks that feel sharp, uncomfortable, and new.
