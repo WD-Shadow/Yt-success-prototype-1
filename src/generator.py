@@ -37,10 +37,8 @@ def is_duplicate_or_similar(new_idea, history):
         old_title = normalize(entry.get("title", ""))
         old_hook = normalize(entry.get("hook", ""))
 
-        # exact match only
-        if new_title == old_title:
-            return True
-        if new_hook == old_hook:
+        # only block EXACT duplicates
+        if new_title == old_title and new_hook == old_hook:
             return True
 
     return False
@@ -73,8 +71,8 @@ def generate():
             filtered.append(idea)
 
     # ---------- FALLBACK ----------
-    if len(filtered) == 0:
-        filtered = ideas[:3]
+   if len(filtered) < 3:
+    filtered = ideas[:5]
 
     # ---------- SORT BY SCORE ----------
     filtered.sort(key=lambda x: x["score"], reverse=True)
