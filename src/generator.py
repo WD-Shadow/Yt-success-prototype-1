@@ -3,11 +3,13 @@ from datetime import datetime
 import hashlib
 import os
 
-# ---------- FILE HELPERS ----------
+# ---------- SETUP ----------
 
 def ensure_dirs():
     os.makedirs("output", exist_ok=True)
     os.makedirs("data", exist_ok=True)
+
+# ---------- FILE HELPERS ----------
 
 def load_json(path):
     try:
@@ -24,7 +26,7 @@ def save_output(text):
     with open("output/results.txt", "w", encoding="utf-8") as f:
         f.write(text)
 
-# ---------- NORMALISATION ----------
+# ---------- UTILS ----------
 
 def normalize(text):
     return text.lower().strip()
@@ -32,7 +34,7 @@ def normalize(text):
 def hash_text(text):
     return hashlib.md5(normalize(text).encode()).hexdigest()
 
-# ---------- DUPLICATE CHECK ----------
+# ---------- DUPLICATE CHECK (SAFE VERSION) ----------
 
 def is_duplicate(new_idea, history):
     new_title = normalize(new_idea["title"])
@@ -53,26 +55,26 @@ def generate():
     ensure_dirs()
     timestamp = str(datetime.now())
 
-    # 🔥 HARD-CODED TEST IDEAS (guaranteed output)
+    # 🔥 STABLE TEST INPUT (always works)
     ideas = [
         {
-            "hook": "You stopped expecting your dua to work.",
-            "script": "You still raise your hands.\nBut deep down… you already gave up.\nSo why keep asking?",
-            "title": "You Gave Up On This Dua Without Noticing",
-            "score": 9,
-            "tag": "TEST"
-        },
-        {
-            "hook": "Your salah looks fine… but something is missing.",
-            "script": "You stand.\nYou recite.\nBut your mind drifts away.\nSo what are you really doing?",
-            "title": "Your Salah Isn’t What You Think",
+            "hook": "You keep making this mistake in salah.",
+            "script": "You think you're focused.\nBut your mind drifts every few seconds.\nSo what are you really doing?",
+            "title": "This Is Ruining Your Salah",
             "score": 8,
             "tag": "TEST"
         },
         {
-            "hook": "You say you want Jannah… but your actions disagree.",
-            "script": "You know what to fix.\nBut you delay it.\nAgain and again.\nSo what do you actually want?",
-            "title": "Your Actions Don’t Match Your Goal",
+            "hook": "You stopped expecting Allah to answer this.",
+            "script": "You still make dua.\nBut you already accepted it won’t happen.\nSo why ask?",
+            "title": "You Gave Up Without Realising",
+            "score": 9,
+            "tag": "TEST"
+        },
+        {
+            "hook": "Your intentions sound good… your actions don’t match.",
+            "script": "You say you care.\nBut your habits show something else.\nSo what do you really want?",
+            "title": "Your Actions Don’t Match Your Words",
             "score": 9,
             "tag": "TEST"
         }
@@ -80,14 +82,12 @@ def generate():
 
     history = load_json("data/history.json")
 
-    # ---------- FILTER ----------
     filtered = []
-
     for idea in ideas:
         if not is_duplicate(idea, history):
             filtered.append(idea)
 
-    # ---------- GUARANTEE OUTPUT ----------
+    # 🔥 GUARANTEE OUTPUT
     if len(filtered) == 0:
         filtered = ideas
 
@@ -106,7 +106,7 @@ Tag: {idea['tag']}
 
     save_output(output_text)
 
-    # ---------- SAVE HISTORY ----------
+    # ---------- SAVE ----------
     for idea in filtered:
         history.append({
             "id": hash_text(idea["title"] + timestamp),
