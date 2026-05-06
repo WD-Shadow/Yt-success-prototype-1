@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import hashlib
 import os
+import random
 
 # ---------- SETUP ----------
 
@@ -34,67 +35,93 @@ def normalize(text):
 def hash_text(text):
     return hashlib.md5(normalize(text).encode()).hexdigest()
 
-# ---------- DUPLICATE CHECK (SAFE VERSION) ----------
-
-def is_duplicate(new_idea, history):
-    new_title = normalize(new_idea["title"])
-    new_hook = normalize(new_idea["hook"])
+def is_duplicate(idea, history):
+    new_title = normalize(idea["title"])
+    new_hook = normalize(idea["hook"])
 
     for entry in history:
         if normalize(entry.get("title", "")) == new_title and \
            normalize(entry.get("hook", "")) == new_hook:
             return True
-
     return False
 
-# ---------- GENERATION ----------
+# ---------- LOCAL IDEA ENGINE ----------
+
+hooks_bank = [
+    "You already gave up on this dua.",
+    "Your salah looks fine… but something’s off.",
+    "You keep delaying what you know is wrong.",
+    "You say you want change… but do nothing.",
+    "You’re doing this sin like it’s normal.",
+    "You don’t even realise you’re doing this.",
+    "You’re not struggling… you’re avoiding.",
+    "You know this is wrong… but continue.",
+    "You think it’s small… it’s not.",
+    "You stopped caring without noticing."
+]
+
+scripts_bank = [
+    "You tell yourself it's fine.\nBut you keep repeating it.\nSo what changed?",
+    "You know the problem.\nYou just don’t fix it.\nWhy?",
+    "You feel something’s wrong.\nBut ignore it.\nAgain.",
+    "You delay it.\nAgain.\nAnd again.\nSo when does it stop?",
+    "You act like it’s small.\nBut it’s consistent.\nThat’s the problem."
+]
+
+titles_bank = [
+    "You Already Gave Up On This",
+    "Something Is Wrong With This",
+    "You Keep Ignoring This",
+    "This Is Your Real Problem",
+    "You’re Not Fixing This",
+    "You Know This Is Wrong",
+    "This Isn’t As Small As You Think"
+]
+
+def generate_local_ideas(n=10):
+    ideas = []
+
+    for _ in range(n):
+        hook = random.choice(hooks_bank)
+        script = random.choice(scripts_bank)
+        title = random.choice(titles_bank)
+
+        ideas.append({
+            "hook": hook,
+            "script": script,
+            "title": title,
+            "score": random.randint(6, 9),
+            "tag": "LOCAL"
+        })
+
+    return ideas
+
+# ---------- MAIN ----------
 
 def generate():
-    print("RUNNING GENERATOR...")
+    print("RUNNING LOCAL GENERATOR...")
 
     ensure_dirs()
     timestamp = str(datetime.now())
 
-    # 🔥 STABLE TEST INPUT (always works)
-    ideas = [
-        {
-            "hook": "You keep making this mistake in salah.",
-            "script": "You think you're focused.\nBut your mind drifts every few seconds.\nSo what are you really doing?",
-            "title": "This Is Ruining Your Salah",
-            "score": 8,
-            "tag": "TEST"
-        },
-        {
-            "hook": "You stopped expecting Allah to answer this.",
-            "script": "You still make dua.\nBut you already accepted it won’t happen.\nSo why ask?",
-            "title": "You Gave Up Without Realising",
-            "score": 9,
-            "tag": "TEST"
-        },
-        {
-            "hook": "Your intentions sound good… your actions don’t match.",
-            "script": "You say you care.\nBut your habits show something else.\nSo what do you really want?",
-            "title": "Your Actions Don’t Match Your Words",
-            "score": 9,
-            "tag": "TEST"
-        }
-    ]
-
     history = load_json("data/history.json")
+
+    ideas = generate_local_ideas(15)
 
     filtered = []
     for idea in ideas:
         if not is_duplicate(idea, history):
             filtered.append(idea)
 
-    # 🔥 GUARANTEE OUTPUT
     if len(filtered) == 0:
-        filtered = ideas
+        filtered = ideas[:5]
+
+    final = filtered[:5]
 
     # ---------- OUTPUT ----------
     output_text = f"Generated: {timestamp}\n\n"
 
-    for i, idea in enumerate(filtered, 1):
+    for i, idea in enumerate(final, 1):
         output_text += f"""Idea {i}:
 Hook: {idea['hook']}
 Script: {idea['script']}
@@ -107,7 +134,7 @@ Tag: {idea['tag']}
     save_output(output_text)
 
     # ---------- SAVE ----------
-    for idea in filtered:
+    for idea in final:
         history.append({
             "id": hash_text(idea["title"] + timestamp),
             "timestamp": timestamp,
@@ -120,7 +147,7 @@ Tag: {idea['tag']}
 
     save_json("data/history.json", history)
 
-    print(f"Saved {len(filtered)} ideas successfully.")
+    print(f"Saved {len(final)} ideas.")
 
 # ---------- RUN ----------
 
