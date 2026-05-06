@@ -35,88 +35,76 @@ def normalize(text):
 def hash_text(text):
     return hashlib.md5(normalize(text).encode()).hexdigest()
 
-def is_duplicate(idea, history):
-    new_title = normalize(idea["title"])
-    new_hook = normalize(idea["hook"])
+# ---------- IDEA COMPONENTS ----------
 
-    for entry in history:
-        if normalize(entry.get("title", "")) == new_title and \
-           normalize(entry.get("hook", "")) == new_hook:
-            return True
-    return False
-
-# ---------- LOCAL IDEA ENGINE ----------
-
-hooks_bank = [
-    "You already gave up on this dua.",
-    "Your salah looks fine… but something’s off.",
-    "You keep delaying what you know is wrong.",
-    "You say you want change… but do nothing.",
-    "You’re doing this sin like it’s normal.",
-    "You don’t even realise you’re doing this.",
-    "You’re not struggling… you’re avoiding.",
-    "You know this is wrong… but continue.",
-    "You think it’s small… it’s not.",
-    "You stopped caring without noticing."
+situations = [
+    "you keep delaying something important",
+    "you’re not focused in salah",
+    "you’ve stopped expecting your dua to work",
+    "you’re repeating the same sin",
+    "you feel stuck but don’t change anything",
+    "you know what’s wrong but ignore it",
 ]
 
-scripts_bank = [
-    "You tell yourself it's fine.\nBut you keep repeating it.\nSo what changed?",
-    "You know the problem.\nYou just don’t fix it.\nWhy?",
-    "You feel something’s wrong.\nBut ignore it.\nAgain.",
-    "You delay it.\nAgain.\nAnd again.\nSo when does it stop?",
-    "You act like it’s small.\nBut it’s consistent.\nThat’s the problem."
+twists = [
+    "but you pretend it’s not a problem",
+    "but your actions show something else",
+    "but deep down you already gave up",
+    "but you keep justifying it",
+    "but nothing is actually changing",
 ]
 
-titles_bank = [
-    "You Already Gave Up On This",
-    "Something Is Wrong With This",
-    "You Keep Ignoring This",
+endings = [
+    "So what are you really doing?",
+    "So what do you actually want?",
+    "So why does this keep happening?",
+    "So when does it stop?",
+]
+
+titles = [
     "This Is Your Real Problem",
-    "You’re Not Fixing This",
-    "You Know This Is Wrong",
-    "This Isn’t As Small As You Think"
+    "You’re Not Being Honest About This",
+    "This Is Why Nothing Changes",
+    "You Keep Ignoring This",
+    "This Is Where You’re Going Wrong",
 ]
 
-def generate_local_ideas(n=10):
-    ideas = []
+# ---------- GENERATION ENGINE ----------
 
-    for _ in range(n):
-        hook = random.choice(hooks_bank)
-        script = random.choice(scripts_bank)
-        title = random.choice(titles_bank)
+def build_idea():
+    situation = random.choice(situations)
+    twist = random.choice(twists)
+    ending = random.choice(endings)
 
-        ideas.append({
-            "hook": hook,
-            "script": script,
-            "title": title,
-            "score": random.randint(6, 9),
-            "tag": "LOCAL"
-        })
+    hook = f"{situation.capitalize()}..."
 
-    return ideas
+    script = f"{situation.capitalize()}.\n{twist}.\n{ending}"
+
+    title = random.choice(titles)
+
+    return {
+        "hook": hook,
+        "script": script,
+        "title": title,
+        "score": random.randint(7, 9),
+        "tag": "STRUCTURED"
+    }
+
+def generate_ideas(n=15):
+    return [build_idea() for _ in range(n)]
 
 # ---------- MAIN ----------
 
 def generate():
-    print("RUNNING LOCAL GENERATOR...")
+    print("RUNNING STRUCTURED GENERATOR...")
 
     ensure_dirs()
     timestamp = str(datetime.now())
 
-    history = load_json("data/history.json")
+    ideas = generate_ideas(15)
 
-    ideas = generate_local_ideas(15)
-
-    filtered = []
-    for idea in ideas:
-        if not is_duplicate(idea, history):
-            filtered.append(idea)
-
-    if len(filtered) == 0:
-        filtered = ideas[:5]
-
-    final = filtered[:5]
+    # keep top 5
+    final = ideas[:5]
 
     # ---------- OUTPUT ----------
     output_text = f"Generated: {timestamp}\n\n"
@@ -134,6 +122,8 @@ Tag: {idea['tag']}
     save_output(output_text)
 
     # ---------- SAVE ----------
+    history = load_json("data/history.json")
+
     for idea in final:
         history.append({
             "id": hash_text(idea["title"] + timestamp),
